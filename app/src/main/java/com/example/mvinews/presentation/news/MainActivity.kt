@@ -1,16 +1,12 @@
 package com.example.mvinews.presentation.news
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.view.isVisible
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.mvinews.R
 import com.example.mvinews.databinding.ActivityNewsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -28,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         render()
         lifecycleScope.launch { viewModel.channelIntent.send(NewsIntents.initialize) }
+
 
     }
 
