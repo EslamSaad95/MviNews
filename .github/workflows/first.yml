@@ -1,8 +1,8 @@
 name: First
 
 on: push
-  branches:
-    master
+  
+
 
 jobs:
   job1:
