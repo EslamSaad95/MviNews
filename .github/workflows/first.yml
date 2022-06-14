@@ -7,7 +7,7 @@ on: push
 jobs:
   job1:
     name:first job
-    runs-on: windows-2019
+    runs-on: [ubuntu-latest]
     steps:
       - name:step1
       - uses: actions/checkout@v3
