@@ -5,8 +5,7 @@ on: push
 
 
 jobs:
-  job1:
-    name:first job
+  job_first:
     build:
       name:first build
     runs-on: windows-2019
