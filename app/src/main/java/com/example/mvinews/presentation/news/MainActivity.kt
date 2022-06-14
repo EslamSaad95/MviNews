@@ -11,6 +11,7 @@ import com.example.mvinews.databinding.ActivityNewsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.util.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -25,9 +26,12 @@ class MainActivity : AppCompatActivity() {
         render()
         lifecycleScope.launch { viewModel.channelIntent.send(NewsIntents.initialize) }
 
+        val nu = intArrayOf()
+        val map: TreeMap<Boolean, Int> = TreeMap<Boolean, Int>()
+
+        nu.sortedArray()
 
     }
-
 
 
     private fun initNewsRv() {
