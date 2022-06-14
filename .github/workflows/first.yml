@@ -6,8 +6,6 @@ on: push
 
 jobs:
   job_first:
-    build:
-      name:first build
     runs-on: windows-2019
     steps:
       - name:step1
