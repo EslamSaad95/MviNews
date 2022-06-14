@@ -1,0 +1,14 @@
+name: First
+
+on: push
+  branches:
+    master
+
+jobs:
+  job1:
+    name:first job
+    runs-on: windows-2019
+    steps:
+      - name:step1
+      - uses: actions/checkout@v3
+      - run: ./gradlew test
