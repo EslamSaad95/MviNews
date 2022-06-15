@@ -15,6 +15,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.MockitoAnnotations
 
 @RunWith(JUnit4::class)
 @ExperimentalCoroutinesApi
@@ -26,11 +27,11 @@ class NewsViewModelTest {
     @Mock
     private lateinit var newsUseCase: NewsUseCase
 
-    @Mock
     private lateinit var viewModel: NewsViewModel
 
     @Before
     fun setup() {
+        MockitoAnnotations.openMocks(this);
         viewModel = NewsViewModel(newsUseCase)
         Dispatchers.setMain(Dispatchers.Unconfined)
     }
