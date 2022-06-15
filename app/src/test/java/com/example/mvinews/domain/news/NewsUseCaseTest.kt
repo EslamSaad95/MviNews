@@ -2,7 +2,6 @@ package com.example.mvinews.domain.news
 
 import com.example.mvinews.domain.Result
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -65,11 +64,11 @@ class NewsUseCaseTest {
     {
         //act
         runBlocking { Mockito.`when`(newsRepo.getNews("","q")).thenAnswer {
-            NewsEntity("","", emptyList())
+            Result.Success(NewsEntity("", "", emptyList()))
         } }
         val useCase=NewsUseCase(newsRepo)
         runBlocking {val expected= useCase.getNews("","q")
-        assertEquals(expected,NewsEntity("","", emptyList()))
+            assert(expected is Result.Success)
         }
 
 

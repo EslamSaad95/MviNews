@@ -1,5 +1,6 @@
 package com.example.mvinews.presentation.news
 
+import com.example.mvinews.domain.Result
 import com.example.mvinews.domain.news.NewsEntity
 import com.example.mvinews.domain.news.NewsUseCase
 import kotlinx.coroutines.Dispatchers
@@ -39,7 +40,7 @@ class NewsViewModelTest {
     fun getNews_withRightParams_thenEmitSuccessViewState() {
         runBlocking {
             Mockito.`when`(newsUseCase.getNews("", "q"))
-                .thenAnswer { NewsEntity("", "", emptyList()) }
+                .thenAnswer { Result.Success(NewsEntity("", "", emptyList())) }
             viewModel.channelIntent.send(NewsIntents.initialize)
 
             assert(viewModel.state.value is NewsViewStates.success)
@@ -52,7 +53,7 @@ class NewsViewModelTest {
     @Test
     fun getNews_withWrongParams_ThenEmitErrorViewState() {
         runBlocking {
-            Mockito.`when`(newsUseCase.getNews("", "q")).thenAnswer { throw RuntimeException("") }
+            Mockito.`when`(newsUseCase.getNews("", "q")).thenAnswer { Result.Error<String>("") }
             viewModel.channelIntent.send(NewsIntents.initialize)
             assert(viewModel.state.value is NewsViewStates.error)
         }
