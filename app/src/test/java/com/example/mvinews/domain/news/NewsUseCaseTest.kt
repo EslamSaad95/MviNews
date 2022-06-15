@@ -1,15 +1,13 @@
 package com.example.mvinews.domain.news
 
+import com.example.mvinews.domain.Result
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoJUnitRunner
-import java.lang.RuntimeException
 
 @RunWith(MockitoJUnitRunner::class)
 class NewsUseCaseTest {
@@ -21,14 +19,16 @@ class NewsUseCaseTest {
     @Test(expected = Exception::class)
     fun getNews_WithWrongParams_ThenRunException() {
         val repo = object : NewsRepository {
-            override suspend fun getNews(token: String, keyWord: String): NewsEntity {
+            override suspend fun getNews(token: String, keyWord: String): Result<NewsEntity> {
                 throw Exception()
             }
 
         }
 
         val useCase = NewsUseCase(repo)
-        runBlocking { useCase.getNews("", "q") }
+        runBlocking {
+            assert(useCase.getNews("", "q") is Result.Error)
+        }
     }
 
 
@@ -39,15 +39,14 @@ class NewsUseCaseTest {
 
         //arrange
         val repo = object : NewsRepository {
-            override suspend fun getNews(token: String, keyWord: String): NewsEntity {
-                return NewsEntity("", "", emptyList())
+            override suspend fun getNews(token: String, keyWord: String): Result<NewsEntity> {
+                return Result.Success(NewsEntity("", "", emptyList()))
             }
         }
         val useCase=NewsUseCase(repo)
-        runBlocking {  useCase.getNews("","q")}
+        runBlocking { assert(useCase.getNews("", "q") is Result.Success) }
 
-        //assert
-        assertEquals(newsEntity,NewsEntity("","", emptyList()))
+
     }
 
 
