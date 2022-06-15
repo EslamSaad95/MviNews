@@ -26,6 +26,7 @@ class NewsViewModelTest {
     @Mock
     private lateinit var newsUseCase: NewsUseCase
 
+    @Mock
     private lateinit var viewModel: NewsViewModel
 
     @Before
