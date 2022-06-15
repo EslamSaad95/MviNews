@@ -13,11 +13,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-
-
-          - name: run tests
-            run: ./gradlew
-
-
           - name: build project
             run: ./gradle assemble
