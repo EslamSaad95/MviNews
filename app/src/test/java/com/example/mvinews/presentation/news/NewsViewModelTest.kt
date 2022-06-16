@@ -64,7 +64,7 @@ class NewsViewModelTest {
     fun processIntent_withInitialize_ThenCallGetNewsFunc() {
         runBlocking {
             Mockito.`when`(newsUseCase.getNews("", "q"))
-                .thenAnswer { NewsEntity("", "", emptyList()) }
+                .thenAnswer { Result.Success(NewsEntity("", "", emptyList())) }
             viewModel.channelIntent.send(NewsIntents.initialize)
             assertNotNull(viewModel.getNews(""))
 
