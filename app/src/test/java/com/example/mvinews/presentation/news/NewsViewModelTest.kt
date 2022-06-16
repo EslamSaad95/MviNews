@@ -14,6 +14,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -31,6 +32,7 @@ class NewsViewModelTest {
 
     @Before
     fun setup() {
+        MockitoAnnotations.initMocks(this)
         viewModel = NewsViewModel(newsUseCase)
         Dispatchers.setMain(Dispatchers.Unconfined)
     }
@@ -41,7 +43,7 @@ class NewsViewModelTest {
         runBlocking {
             Mockito.`when`(newsUseCase.getNews("", "q")).thenAnswer { Result.Error<String>("") }
             viewModel.channelIntent.send(NewsIntents.initialize)
-           // assert(viewModel.state.value is NewsViewStates.error)
+            assert(viewModel.state.value is NewsViewStates.error)
         }
     }
 
