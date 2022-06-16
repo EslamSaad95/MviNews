@@ -12,12 +12,11 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.MockitoAnnotations
+import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(JUnit4::class)
+@RunWith(MockitoJUnitRunner::class)
 @ExperimentalCoroutinesApi
 class NewsViewModelTest {
     @Rule
@@ -27,11 +26,11 @@ class NewsViewModelTest {
     @Mock
     private lateinit var newsUseCase: NewsUseCase
 
+    @Mock
     private lateinit var viewModel: NewsViewModel
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
         viewModel = NewsViewModel(newsUseCase)
         Dispatchers.setMain(Dispatchers.Unconfined)
     }
