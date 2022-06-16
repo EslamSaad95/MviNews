@@ -35,6 +35,16 @@ class NewsViewModelTest {
         Dispatchers.setMain(Dispatchers.Unconfined)
     }
 
+
+    @Test
+    fun getNews_withWrongParams_ThenEmitErrorViewState() {
+        runBlocking {
+            Mockito.`when`(newsUseCase.getNews("", "q")).thenAnswer { Result.Error<String>("") }
+            viewModel.channelIntent.send(NewsIntents.initialize)
+            assert(viewModel.state.value is NewsViewStates.error)
+        }
+    }
+
     @Test
     fun getNews_withRightParams_thenEmitSuccessViewState() {
         runBlocking {
@@ -48,16 +58,6 @@ class NewsViewModelTest {
 
         }
     }
-
-    @Test
-    fun getNews_withWrongParams_ThenEmitErrorViewState() {
-        runBlocking {
-            Mockito.`when`(newsUseCase.getNews("", "q")).thenAnswer { Result.Error<String>("") }
-            viewModel.channelIntent.send(NewsIntents.initialize)
-            assert(viewModel.state.value is NewsViewStates.error)
-        }
-    }
-
 
     @Test
     fun processIntent_withInitialize_ThenCallGetNewsFunc() {
