@@ -31,7 +31,7 @@ class NewsViewModelTest {
 
     @Before
     fun setup() {
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this)
         viewModel = NewsViewModel(newsUseCase)
         Dispatchers.setMain(Dispatchers.Unconfined)
     }
