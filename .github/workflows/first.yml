@@ -18,11 +18,11 @@ jobs:
       - name: Change wrapper permissions  // 2
         run: chmod +x ./gradlew
 
-      - name: Run Tests                   // 3
-        run: ./gradlew test
-
-      - name: Build Project               // 4
-        run: ./gradlew assemble
+      #      - name: Run Tests                   // 3
+      #        run: ./gradlew test
+      #
+      #      - name: Build Project               // 4
+      #        run: ./gradlew assemble
 
       - name: Build Debug Apk
         run: ./gradlew assembleDebug
@@ -45,6 +45,7 @@ jobs:
           secure: true
           # Optional plain body:
           body: Build job of
+          tls: true
 
 
 
