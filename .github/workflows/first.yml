@@ -24,4 +24,8 @@ jobs:
       - name: Build Project               // 4
         run: ./gradlew assemble
 
+      - name: Build Debug Apk
+        run: ./gradlew assembleDebug
+
+
 
