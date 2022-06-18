@@ -45,7 +45,7 @@ jobs:
           #          from: Luke Skywalker # <user@example.com>
           #          # Optional whether this connection use TLS (default is true if server_port is 465)
           #          secure: true
-          #          # Optional plain body:
+        #          # Optional plain body:
         #          body: Build job of
         #          attachments: app/build/outputs/apk/debug/app-debug.apk
 
@@ -53,12 +53,12 @@ jobs:
         run:
           git config --global --add safe.directory /github/workspace
         #Upload Apk to Firebase Distribution
-      - name: Firebase App Distribution Action
-        uses: hasretsariyer/firebase-app-distribution-github-action@v1.0
+      - name: upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          app_id: ${{secrets.FIREBASE_APPID}}
-          firebase_token: ${{secrets.FIREBASE_TOKEN}}
-          app_file: app/build/outputs/apk/debug/app-debug.apk
+          appId: ${{secrets.FIREBASE_APPID}}
+          token: ${{secrets.FIREBASE_TOKEN}}
+          file: app/build/outputs/apk/debug/app-debug.apk
 
 
 
