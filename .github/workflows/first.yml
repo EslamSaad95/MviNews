@@ -53,10 +53,9 @@ jobs:
       - name: Firebase App Distribution Action
         uses: hasretsariyer/firebase-app-distribution-github-action@v1.0
         with:
-          appId: 'bankeldam-e3c7b'
-          token: '1//03bJ9B4mdrtTACgYIARAAGAMSNwF-L9IrhQBlJRXVjmt-ctEWYWPcmI-NI667bkRXqz6rNDIfe0SyY_BvwLZ4RHCYa0cl3CsIqzU'
-          groups: testers
-          file: app/build/outputs/apk/debug/app-debug.apk
+          app_id: 'bankeldam-e3c7b'
+          firebase_token: '1//03bJ9B4mdrtTACgYIARAAGAMSNwF-L9IrhQBlJRXVjmt-ctEWYWPcmI-NI667bkRXqz6rNDIfe0SyY_BvwLZ4RHCYa0cl3CsIqzU'
+          app_file: app/build/outputs/apk/debug/app-debug.apk
 
 
 
