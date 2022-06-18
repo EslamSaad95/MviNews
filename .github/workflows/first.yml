@@ -18,34 +18,46 @@ jobs:
       - name: Change wrapper permissions  // 2
         run: chmod +x ./gradlew
 
-      #      - name: Run Tests                   // 3
-      #        run: ./gradlew test
-      #
-      #      - name: Build Project               // 4
-      #        run: ./gradlew assemble
+          #      - name: Run Tests                   // 3
+          #        run: ./gradlew test
+          #
+          #      - name: Build Project               // 4
+          #        run: ./gradlew assemble
 
-      - name: Build Debug Apk
-        run: ./gradlew assembleDebug
+          #      - name: Build Debug Apk
+          #        run: ./gradlew assembleDebug
 
-      - name: send email
-        uses: dawidd6/action-send-mail@v3.6.1
+
+          # job of sending mail by gmail
+          #      - name: send email
+          #        uses: dawidd6/action-send-mail@v3.6.1
+          #        with:
+          #          server_address: smtp.gmail.com
+          #          server_port: 465
+          #          username: ${{secrets.MAIL_USER_NAME}}
+          #          # Optional (recommended) mail server password:
+          #          password: ${{secrets.MAIL_PASSWORD}}
+          #          # Required mail subject:
+          #          subject: Github Actions job result
+          #          # Required recipients' addresses:
+          #          to: eslamsaad45@gmail.com
+          #          # Required sender full name (address can be skipped):
+          #          from: Luke Skywalker # <user@example.com>
+          #          # Optional whether this connection use TLS (default is true if server_port is 465)
+          #          secure: true
+          #          # Optional plain body:
+          #          body: Build job of
+          #          attachments: app/build/outputs/apk/debug/app-debug.apk
+
+        #Upload Apk to Firebase Distribution
+      - name: upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
         with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{secrets.MAIL_USER_NAME}}
-          # Optional (recommended) mail server password:
-          password: ${{secrets.MAIL_PASSWORD}}
-          # Required mail subject:
-          subject: Github Actions job result
-          # Required recipients' addresses:
-          to: eslamsaad45@gmail.com
-          # Required sender full name (address can be skipped):
-          from: Luke Skywalker # <user@example.com>
-          # Optional whether this connection use TLS (default is true if server_port is 465)
-          secure: true
-          # Optional plain body:
-          body: Build job of
-          tls: true
+          appId: 'bankeldam-e3c7b'
+          token: '1//03bJ9B4mdrtTACgYIARAAGAMSNwF-L9IrhQBlJRXVjmt-ctEWYWPcmI-NI667bkRXqz6rNDIfe0SyY_BvwLZ4RHCYa0cl3CsIqzU'
+          groups: testers
+          file: app/build/outputs/apk/debug/app-debug.apk
+
 
 
 

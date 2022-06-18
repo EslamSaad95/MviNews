@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewsBinding
@@ -24,8 +25,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         render()
         lifecycleScope.launch { viewModel.channelIntent.send(NewsIntents.initialize) }
-
-        
     }
 
 
@@ -54,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     is NewsViewStates.error->{
                         binding.progress.visibility=View.GONE
-                        Toast.makeText(this@MainActivity, it.message ?: "ll", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
