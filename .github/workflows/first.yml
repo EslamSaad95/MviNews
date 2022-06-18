@@ -47,11 +47,11 @@ jobs:
           #          secure: true
           #          # Optional plain body:
           #          body: Build job of
-          #          attachments: app/build/outputs/apk/debug/app-debug.apk
+        #          attachments: app/build/outputs/apk/debug/app-debug.apk
 
         #Upload Apk to Firebase Distribution
-      - name: upload artifact to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.2
+      - name: Firebase App Distribution Action
+        uses: hasretsariyer/firebase-app-distribution-github-action@v1.0
         with:
           appId: 'bankeldam-e3c7b'
           token: '1//03bJ9B4mdrtTACgYIARAAGAMSNwF-L9IrhQBlJRXVjmt-ctEWYWPcmI-NI667bkRXqz6rNDIfe0SyY_BvwLZ4RHCYa0cl3CsIqzU'
