@@ -51,7 +51,7 @@ jobs:
 
       - name: Trust GitHub workspace
         run:
-          git config --global --add safe.directory '/__w/eksctl/eksctl'
+          git config --global --add safe.directory /github/workspace
         #Upload Apk to Firebase Distribution
       - name: Firebase App Distribution Action
         uses: hasretsariyer/firebase-app-distribution-github-action@v1.0
