@@ -46,9 +46,12 @@ jobs:
           #          # Optional whether this connection use TLS (default is true if server_port is 465)
           #          secure: true
           #          # Optional plain body:
-          #          body: Build job of
+        #          body: Build job of
         #          attachments: app/build/outputs/apk/debug/app-debug.apk
 
+      - name: Trust GitHub workspace
+        run:
+          git config --global --add safe.directory '/__w/eksctl/eksctl'
         #Upload Apk to Firebase Distribution
       - name: Firebase App Distribution Action
         uses: hasretsariyer/firebase-app-distribution-github-action@v1.0
