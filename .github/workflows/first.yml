@@ -20,12 +20,12 @@ jobs:
 
           #      - name: Run Tests                   // 3
           #        run: ./gradlew test
-          #
-          #      - name: Build Project               // 4
-          #        run: ./gradlew assemble
+        #
+      - name: Build Project               // 4
+        run: ./gradlew assemble
 
-          #      - name: Build Debug Apk
-          #        run: ./gradlew assembleDebug
+      - name: Build Debug Apk
+        run: ./gradlew assembleDebug
 
 
           # job of sending mail by gmail
